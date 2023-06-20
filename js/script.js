@@ -7,7 +7,7 @@ class Prompt extends HTMLElement {
 
         let buttons = this.querySelectorAll(`.button`);
 
-        Array.from(buttons).forEach((button, idx) => {
+        Array.from(buttons).forEach((button) => {
             button.addEventListener("click", () => {
                 let next = button.getAttribute("next");
                 let next_prompt = document.querySelector(`[name=${next}]`);
