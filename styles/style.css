@@ -1,0 +1,26 @@
+.prompt {
+    margin: 1rem auto;
+}
+
+.button {
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+.content {
+    margin: 1rem auto;
+    display: flex;
+}
+
+.content-item {
+    display: none;
+}
+
+.content-active {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}

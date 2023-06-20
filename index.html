@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles/style.css" />
+        <script src="js/script.js"></script>
+        <title>Interactive Python Troubleshooting</title>
+    </head>
+    <interactive-prompt name="base" level="1">
+        <span slot="prompt-title">What operating system are you using?</span>
+        <span slot="options">
+            <button class="button" next="windows-base">Windows</button>
+            <button class="button" next="linux-base">Linux</button>
+            <button class="button" next="mac-base">MacOS</button>
+        </span>
+    </interactive-prompt>
+
+    <interactive-prompt name="windows-base" level="2" class="hidden">
+        <span slot="prompt-title">What editor are you using?</span>
+        <span slot="options">
+            <button class="button" next="pycharm-base">PyCharm</button>
+            <button class="button" next="vscode-base">VSCode</button>
+            <button class="button" next="something-else-base">
+                Something Else
+            </button>
+        </span>
+    </interactive-prompt>
+
+    <interactive-prompt name="linux-base" level="2" class="hidden">
+        <span slot="prompt-title">What editor are you using?</span>
+        <span slot="options">
+            <button class="button" next="pycharm-base">PyCharm</button>
+            <button class="button" next="vscode-base">VSCode</button>
+            <button class="button" next="something-else-base">
+                Something Else
+            </button>
+        </span>
+    </interactive-prompt>
+
+    <interactive-prompt name="mac-base" level="2" class="hidden">
+        <span slot="prompt-title">What editor are you using?</span>
+        <span slot="options">
+            <button class="button" next="pycharm-base">PyCharm</button>
+            <button class="button" next="vscode-base">VSCode</button>
+            <button class="button" next="something-else-base">
+                Something Else
+            </button>
+        </span>
+    </interactive-prompt>
+
+    <interactive-prompt name="pycharm-base" level="3" class="hidden">
+        <span slot="prompt-title"
+            >Where did you run the <code>pip install</code> command?</span
+        >
+        <span slot="options">
+            <button class="button" next="inside-pycharm">Inside PyCharm</button>
+            <button class="button" next="terminal-window">
+                A terminal window
+            </button>
+        </span>
+    </interactive-prompt>
+
+    <interactive-prompt name="vscode-base" level="3" class="hidden">
+        <span slot="prompt-title">
+            Open a cmd or Powershell window and run the following command:
+            <pre><code>
+        py -0p
+      </code></pre>
+            In the output, how many python versions are listed?
+        </span>
+        <span slot="options">
+            <button class="button" next="just-one">Just one</button>
+            <button class="button" next="more-than-one">More than one</button>
+        </span>
+    </interactive-prompt>
+
+    <interactive-prompt name="something-else-base" level="3" class="hidden">
+        <span slot="prompt-title">
+            I'm sorry, we don't have help for this situation.
+        </span>
+    </interactive-prompt>
+
+    <interactive-prompt name="inside-pycharm" level="4" class="hidden">
+        <span slot="prompt-title">UNSURE/TODO</span>
+    </interactive-prompt>
+
+    <interactive-prompt name="terminal-window" level="4" class="hidden">
+        <span slot="prompt-title">
+            Try installing the library with <code>pip</code> again, but this
+            time run it inside PyCharm, via its built-in-terminal.
+            <br />
+            OR:
+            <br />
+            Use PyCharm's built-in menu for installing libraries. You can open
+            it by navigating to
+            <code>View -> Tool Windows > Python Packages</code>, then you can
+            search for your desired package in the <code>Search</code> field and
+            install it.
+        </span>
+    </interactive-prompt>
+
+    <interactive-prompt name="just-one" level="4" class="hidden">
+        <span slot="prompt-title">UNSURE/TODO</span>
+    </interactive-prompt>
+
+    <interactive-prompt name="more-than-one" level="4" class="hidden">
+        <span slot="prompt-title">
+            This time, try installing your library again, but instead use the
+            following command:
+            <br />
+            <pre><code>
+      py -m pip install &ltpackage-name&gt
+      </code></pre>
+            <br />
+            Once that’s finished, navigate back to VSCode and select a new
+            Python interpreter. You can do so by selecting the box where your
+            current Python version is listed on the bottom-most bar in the
+            editor, and selecting the latest (that is, the highest version)
+            Python interpreter from the list.
+        </span>
+    </interactive-prompt>
+
+    <template id="prompt-template">
+        <div class="container">
+            <span>
+                <slot name="prompt-title">Title Needed</slot>
+            </span>
+            <div class="options">
+                <slot name="options" />
+            </div>
+        </div>
+    </template>
+</html>
